@@ -49,14 +49,12 @@ y = np.full((len(X), 1), person_name)
 data = np.hstack([y, X])
 
 if os.path.exists("face_data.npy"):
-    old = np.load("face_data.npy")
+    old = np.load("face_data.npy", allow_pickle=True)
     data = np.vstack([old, data])
 
 data.dump("face_data.npy")
 
 print(data.shape)
-
-
 
 cap.release()
 cv2.destroyAllWindows()
